@@ -70,10 +70,10 @@
             var xmlDoc = xml.responseXML;
             var table="<tr><th>Created at (Date and Time)</th><th>Temperature (*C)</th><th>Humidity (%)</th><th>Heat-Index (*C)</th><th>Motion Detected? (Y/N)</th></tr>";
             var x = xmlDoc.getElementsByTagName("feed");
-            for (i = 0; i <x.length; i++) 
+            for (i = 0; i <x.length; i++) //replace 12 by x.length
             { 
                 table += "<tr><td>" +
-                x[i].getElementsByTagName("created-at")[0].childNodes[0].nodeValue +    //if any of the values is NULL(/NIL), this gives an error!
+                x[i].getElementsByTagName("created-at")[0].childNodes[0].nodeValue +
                 "</td><td>" +
                 x[i].getElementsByTagName("field1")[0].childNodes[0].nodeValue +
                 "</td><td>" +

@@ -1,0 +1,96 @@
+<html>
+    <head>
+        <title>Shivam ACM SMP</title>
+        <link rel="icon" href="Pikachu.ico" type="image/x-icon">
+    </head>
+    <style>
+        body
+        {
+            background-image: url("bgimg.jpg");
+            font-family: verdana;
+        }
+        h1
+        {
+            font-size: 40px;
+            text-align: center;
+        }
+        h2
+        {
+            font-size: 25px;
+            text-align: center;
+        }
+        h3
+        {
+            font-size: 10px;
+        }
+        p
+        {
+            font-size: 20px;    
+        }
+        
+    </style>
+    <style>
+        table,th,td 
+        {
+            border : 1px solid black;
+            border-collapse: collapse;
+        }
+        th,td
+        {
+            padding: 5px;
+        }
+</style>
+<body text="white">
+    <br><hr><h1><u>Welcome!</u></h1><hr>
+    <h2>ACM-NITK IoT SMP 2018 Project<br>Publishing Sensor Data to Website</h2>
+    This website shows data read from my DHT11 sensor and PIR sensor module connected to Arduino Uno and transmitted through ESP12-E via ThingSpeak! 
+    <br><br>
+    <b>Press this button to get the data!</b>
+    <br>
+    <button type="button" autofocus onclick="loadXMLDoc()">Get Sensor Data</button>
+    <br><br>
+    <table align="center" id="demo"></table>
+    <script>
+        function loadXMLDoc() 
+        {
+            var xmlhttp = new XMLHttpRequest();
+            xmlhttp.onreadystatechange = function() 
+            {
+                if (this.readyState == 4 && this.status == 200) 
+                {
+                    myFunction(this);
+                }
+            };
+            xmlhttp.open("GET","https://api.thingspeak.com/channels/546356/feeds.xml?api_key=", true);
+            xmlhttp.send();
+        }
+        function myFunction(xml) 
+        {
+            var i;
+            var xmlDoc = xml.responseXML;
+            var table="<tr><th>Created at (Date and Time)</th><th>Temperature (*C)</th><th>Humidity (%)</th><th>Heat-Index (*C)</th><th>Motion Detected? (Y/N)</th></tr>";
+            var x = xmlDoc.getElementsByTagName("feed");
+            for (i = 0; i <x.length; i++) 
+            { 
+                table += "<tr><td>" +
+                x[i].getElementsByTagName("created-at")[0].childNodes[0].nodeValue +
+                "</td><td>" +
+                x[i].getElementsByTagName("field1")[0].childNodes[0].nodeValue +
+                "</td><td>" +
+                x[i].getElementsByTagName("field2")[0].childNodes[0].nodeValue +
+                "</td><td>" +
+                x[i].getElementsByTagName("field3")[0].childNodes[0].nodeValue +
+                "</td><td>" +
+                x[i].getElementsByTagName("field4")[0].childNodes[0].nodeValue +
+                "</td></tr>";
+            }
+            document.getElementById("demo").innerHTML = table;
+        }
+    </script>
+    <p align="center"><iframe width="450" height="260" style="border: 1px solid #cccccc;" src="https://thingspeak.com/channels/546356/charts/1?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=60&title=Temperature+Graph&type=line&xaxis=Time&yaxis=Temperature"></iframe>&emsp;<iframe width="450" height="260" style="border: 1px solid #cccccc;" src="https://thingspeak.com/channels/546356/widgets/8654"></iframe></p>
+    <p align="center"><iframe width="450" height="260" style="border: 1px solid #cccccc;" src="https://thingspeak.com/channels/546356/charts/2?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=60&title=Humidity+Chart&type=line&xaxis=Time&yaxis=Humidity"></iframe>&emsp;<iframe width="450" height="260" style="border: 1px solid #cccccc;" src="https://thingspeak.com/channels/546356/widgets/8655"></iframe></p>
+    <p align="center"><iframe width="450" height="260" style="border: 1px solid #cccccc;" src="https://thingspeak.com/channels/546356/charts/3?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=60&title=Heat+Index+Chart&type=line&xaxis=Time&yaxis=Heat+Index+%28%2AC%29"></iframe>&emsp;<iframe width="450" height="260" style="border: 1px solid #cccccc;" src="https://thingspeak.com/channels/546356/widgets/8656"></iframe></p>
+    <hr>
+    <p align="center">Designed by:<br><b><u>Shivam Mahesh Potdar</u></b><br>2nd Yr B.Tech EEE<br>NITK Surathkal</p><hr>
+    </body>
+</html>

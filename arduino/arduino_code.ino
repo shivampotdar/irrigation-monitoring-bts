@@ -59,7 +59,7 @@ void readmap(void)                                            //This function re
   aval[4] = analogRead(A4);
   aval[5] = analogRead(A5);
   for (i = 0; i < 6; i++)
-    h[i] = map(aval[i], 0, 1023, 0, 100);
+    h[i] = map(aval[i], 0, 1023, 100, 0);
 }
 
 void setup() {

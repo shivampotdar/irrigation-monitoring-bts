@@ -22,16 +22,11 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
     <style type="text/css">
-      html, body, {
-    position:fixed;
-    top:0;
-    bottom:0;
-    left:0;
-    right:0;
-}
+
  
-      .sensor{
-        width:auto;
+      .sensor,.temperature{
+        width:300px;
+         align-content: center;
       }
     
           
@@ -43,6 +38,12 @@
           -moz-background-size: cover;
           -o-background-size: cover;
           background-size: cover;
+       
+    top:0;
+    bottom:0;
+    left:0;
+    right:0;
+         align-content: center;
           
           }
       
@@ -51,11 +52,14 @@
               background: none;
               color: #FFF;
                display: table;
-    margin: auto;
-             
-             
-              
-          }
+                 margin: auto;
+                
+               top:0;
+                bottom:0;
+                left:0;
+                right:0;
+              align-content: center;
+              }
           
           
       
@@ -67,22 +71,28 @@
   <body>
       
 <div class="alert alert-success sensor" role="alert" id="sensor1" >
-  
+Sensor 1 <br> Recommended=<?php echo $sensor1v;?>
 </div>
 <div class="alert alert-success sensor" role="alert" id="sensor2" >
-
+Sensor 2 <br> Recommended=<?php echo $sensor2v;?>
 </div>
 <div class="alert alert-success sensor" role="alert" id="sensor3" >
-
+Sensor 3 <br> Recommended=<?php echo $sensor3v;?>
 </div>
 <div class="alert alert-success sensor" role="alert" id="sensor4" >
-
+Sensor 4 <br> Recommended=<?php echo $sensor4v;?>
 </div>
 <div class="alert alert-success sensor" role="alert" id="sensor5"> 
-
+Sensor 5 <br> Recommended=<?php echo $sensor5v;?>
 </div>
 <div class="alert alert-success sensor" role="alert" id="sensor6">
-
+Sensor 6 <br> Recommended=<?php echo $sensor6v;?>
+</div>
+    <div class="alert alert-success sensor" role="alert" id="temperature">
+      Temperature=*<strong><sup>.</sup></strong>C
+</div>
+        <div class="alert alert-success sensor" role="alert" id="airhumididty">
+         Air Humidity=*
 </div>
       <button type="button" class="btn btn-primary" id="find">Fetch</button>
 
@@ -110,27 +120,29 @@ var sensor4vj = <?php echo json_encode($sensor4v); ?>;
 var sensor5vj = <?php echo json_encode($sensor5v); ?>;
 var sensor6vj = <?php echo json_encode($sensor6v); ?>;
  	
-    $("#sensor1").html("Sensor 1 Recommended=<?php echo $sensor1v;  ?> Actual Value="+data["field1"]);
+    $("#sensor1").html("Sensor 1 <br> Recommended=<?php echo $sensor1v;  ?><br>Actual Value="+data["field1"]);
 
                	
 
- $("#sensor2").html("Sensor 2 Recommended=<?php echo $sensor2v;  ?> Actual Value="+data["field2"]);
+ $("#sensor2").html("Sensor 2 <br> Recommended=<?php echo $sensor2v;  ?><br> Actual Value="+data["field2"]);
 
                	
 
- $("#sensor3").html("Sensor 3 Recommended=<?php echo $sensor3v;  ?> Actual Value="+data["field3"]);
+ $("#sensor3").html("Sensor 3 <br> Recommended=<?php echo $sensor3v;  ?><br> Actual Value="+data["field3"]);
 
                	
 
- $("#sensor4").html("Sensor 4 Recommended=<?php echo $sensor4v;  ?> Actual Value="+data["field4"]);
+ $("#sensor4").html("Sensor 4 <br> Recommended=<?php echo $sensor4v;  ?> <br>Actual Value="+data["field4"]);
 
                	
 
- $("#sensor5").html("Sensor 5 Recommended=<?php echo $sensor5v;  ?> Actual Value="+data["field5"]);
+ $("#sensor5").html("Sensor 5 <br> Recommended=<?php echo $sensor5v;  ?> <br>Actual Value="+data["field5"]);
 
                	
 
- $("#sensor6").html("Sensor 6 Recommended=<?php echo $sensor6v;  ?> Actual Value="+data["field6"]);
+ $("#sensor6").html("Sensor 6 <br> Recommended=<?php echo $sensor6v;  ?> <br>Actual Value="+data["field6"]);
+ $("#temperature").html("Temperature="+data["field7"]+"<strong><sup>.</sup></strong>C");
+ $("#airhumididty").html("Air Humidity="+data["field8"]);
 
                 if(data["field1"]<sensor1vj)
                {

@@ -3,9 +3,13 @@
 Bengaluru Tech Summit 2018 Hackathon Project
 
 Made by- 
+
 -Shivam Potdar
+
 -Vithik Shah
+
 -Ayush Kumar
+
 National Institute of Technology Karnataka (NITK), Surathkal
 
 1. Arduino Folder contains: Code for Arduino Mega

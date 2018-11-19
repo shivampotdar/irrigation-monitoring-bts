@@ -15,7 +15,7 @@
   <head>
     <!-- Required meta tags always come first -->
     <meta charset="utf-8">
-    
+   
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
       <title>Agriculture Sensors</title>
@@ -28,48 +28,48 @@
         width:300px;
          align-content: center;
       }
-    
-          
-          
-      html { 
-          
-          background: url(background.jpg) no-repeat center center fixed; 
+   
+         
+         
+      html {
+         
+          background: url(background.jpg) no-repeat center center fixed;
           -webkit-background-size: cover;
           -moz-background-size: cover;
           -o-background-size: cover;
           background-size: cover;
-       
+      
     top:0;
     bottom:0;
     left:0;
     right:0;
          align-content: center;
-          
+         
           }
-      
+     
            body {
-              
+             
               background: none;
               color: #FFF;
                display: table;
                  margin: auto;
-                
+               
                top:0;
                 bottom:0;
                 left:0;
                 right:0;
               align-content: center;
               }
-          
-          
-      
-    
+         
+         
+     
+   
     </style>
-    
-    
+   
+   
   </head>
   <body>
-      
+     
 <div class="alert alert-success sensor" role="alert" id="sensor1" >
 Sensor 1 <br> Recommended=<?php echo $sensor1v;?>
 </div>
@@ -82,7 +82,7 @@ Sensor 3 <br> Recommended=<?php echo $sensor3v;?>
 <div class="alert alert-success sensor" role="alert" id="sensor4" >
 Sensor 4 <br> Recommended=<?php echo $sensor4v;?>
 </div>
-<div class="alert alert-success sensor" role="alert" id="sensor5"> 
+<div class="alert alert-success sensor" role="alert" id="sensor5">
 Sensor 5 <br> Recommended=<?php echo $sensor5v;?>
 </div>
 <div class="alert alert-success sensor" role="alert" id="sensor6">
@@ -99,46 +99,46 @@ Sensor 6 <br> Recommended=<?php echo $sensor6v;?>
     <!-- jQuery first, then Bootstrap JS. -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/js/bootstrap.min.js" integrity="sha384-vZ2WRJMwsjRMW/8U7i6PWi6AlO1L79snBrmgiDpgIWJ82z8eA5lenwvxbMV1PAh7" crossorigin="anonymous"></script>
-      
+     
         <script type="text/javascript">
-      
+     
        $("#find").click(function(e) {
-      
-        e.preventDefault();  
-              
+     
+        e.preventDefault(); 
+             
     $.ajax({
             url: "https://api.thingspeak.com/channels/623644/feeds/last.json?api_key=COIV4PHRG15EIGU2",
             type: "GET",
             success: function (data) {
-                 
                 
-              
+               
+             
 var sensor1vj = <?php echo json_encode($sensor1v); ?>;
 var sensor2vj = <?php echo json_encode($sensor2v); ?>;
 var sensor3vj = <?php echo json_encode($sensor3v); ?>;
 var sensor4vj = <?php echo json_encode($sensor4v); ?>;
 var sensor5vj = <?php echo json_encode($sensor5v); ?>;
 var sensor6vj = <?php echo json_encode($sensor6v); ?>;
- 	
+    
     $("#sensor1").html("Sensor 1 <br> Recommended=<?php echo $sensor1v;  ?><br>Actual Value="+data["field1"]);
 
-               	
+                  
 
  $("#sensor2").html("Sensor 2 <br> Recommended=<?php echo $sensor2v;  ?><br> Actual Value="+data["field2"]);
 
-               	
+                  
 
  $("#sensor3").html("Sensor 3 <br> Recommended=<?php echo $sensor3v;  ?><br> Actual Value="+data["field3"]);
 
-               	
+                  
 
  $("#sensor4").html("Sensor 4 <br> Recommended=<?php echo $sensor4v;  ?> <br>Actual Value="+data["field4"]);
 
-               	
+                  
 
  $("#sensor5").html("Sensor 5 <br> Recommended=<?php echo $sensor5v;  ?> <br>Actual Value="+data["field5"]);
 
-               	
+                  
 
  $("#sensor6").html("Sensor 6 <br> Recommended=<?php echo $sensor6v;  ?> <br>Actual Value="+data["field6"]);
  $("#temperature").html("Temperature="+data["field7"]+"<strong><sup>.</sup></strong>C");
@@ -184,14 +184,14 @@ var sensor6vj = <?php echo json_encode($sensor6v); ?>;
                     $("#sensor2").addClass("alert-success");
                    $("#sensor2").removeClass("alert-danger");
                 }
-                
+               
               if(data["field3"]>sensor3vj)
                {
-                 
+                
                     $("#sensor3").addClass("alert-success");
                    $("#sensor3").removeClass("alert-danger");
                 }
-                
+               
                   if(data["field4"]>sensor4vj)
                {
                     $("#sensor4").addClass("alert-success");
@@ -202,7 +202,7 @@ var sensor6vj = <?php echo json_encode($sensor6v); ?>;
                     $("#sensor5").addClass("alert-success");
                    $("#sensor5").removeClass("alert-danger");
                 }
-                
+               
                   if(data["field6"]>sensor6vj)
                {
                     $("#sensor6").addClass("alert-success");
@@ -213,7 +213,7 @@ var sensor6vj = <?php echo json_encode($sensor6v); ?>;
 })
 
 
-      
+     
       </script>
   </body>
 </html>

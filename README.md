@@ -18,3 +18,6 @@ National Institute of Technology Karnataka (NITK), Surathkal
 
 3. Android folder contains the APK and source code of the Android app
 
+To access the website Check this link:
+https://shivampotdar.github.io/irrigation-monitoring-bts/index.html
+
